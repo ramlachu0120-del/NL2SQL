@@ -2,11 +2,8 @@ import re
 import sqlite3
 from fastapi import FastAPI
 from pydantic import BaseModel
-from openai import OpenAI
 from groq import Groq
 
-
-# OpenAI client
 client = Groq(
     api_key="Groq_Api",
     
@@ -98,5 +95,6 @@ def ask(question: Question):
         return {
             "error": str(e)
         }
+
 
 
