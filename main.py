@@ -4,11 +4,9 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from groq import Groq
 
-client = Groq(
-    api_key="Groq_Api",
-    
+import os
 
-)
+client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # FastAPI app
 app = FastAPI()
@@ -78,7 +76,7 @@ def sql_result_to_nl(question: str, result):
     return res
 
 @app.post("/ask")
-def ask(question: Question):
+async def ask(question: Question):
     try:
         print("Received question:", question.question)
         sql_query = nl_to_sql(question.question)
