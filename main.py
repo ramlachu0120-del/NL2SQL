@@ -75,7 +75,7 @@ def sql_result_to_nl(question: str, result):
     print("Generated NL answer:", res)
     return res
 
-@app.post("/ask")
+@app.get("/ping")
 async def ask(question: Question):
     try:
         print("Received question:", question.question)
@@ -134,7 +134,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-@app.get("/ping")
+@app.post("/ping")
 def ping():
     return {"message": "pong"}
 
