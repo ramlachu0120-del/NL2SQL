@@ -82,10 +82,9 @@ async def ask(question: Question):
         sql_query = nl_to_sql(question.question)
         result = execute_sql(sql_query)
         answer = sql_result_to_nl(question.question, result)
-        return {
+        return
             "sql": sql_query,
             "answer": answer
-        }
     except Exception as e:
         print("Error occurred:", e)
         return {
