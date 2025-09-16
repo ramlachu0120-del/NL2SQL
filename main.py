@@ -134,7 +134,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-@app.post("/ping")
+@app.get("/ping")
 def ping():
     return {"message": "pong"}
 
