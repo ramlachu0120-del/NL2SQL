@@ -76,7 +76,7 @@ def sql_result_to_nl(question: str, result):
     return res
 
 @app.post("/ask")
- async def ask(question: Question):
+async def ask(question: Question):
     try:
         print("Received question:", question.question)
         sql_query = nl_to_sql(question.question)
