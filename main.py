@@ -76,24 +76,23 @@ def sql_result_to_nl(question: str, result):
     return res
 
 @app.post("/ask")
-async def ask(question: Question):
+ async def ask(question: Question):
     try:
         print("Received question:", question.question)
         sql_query = nl_to_sql(question.question)
         result = execute_sql(sql_query)
         answer = sql_result_to_nl(question.question, result)
-         return {
+        return {
             "question": question.question,
             "sql": sql_query,
             "result": result,
             "answer": answer
-         }
+        }
     except Exception as e:
         print("Error occurred:", e)
         return {
             "error": str(e)
         }
-
 
 import pandas as pd
 import sqlite3
